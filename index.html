@@ -38,10 +38,15 @@
                     setTimeout(this.el.object3D.rotation.y = 0, 100);
                 }
                 
-                var initialPointToAppearFinalFrame = 0.82 - this.el.object3D.rotation.y;
-                console.log(initialPointToAppearFinalFrame);
+                var initialPointToAppearFinalFrame = 0.50 - this.el.object3D.rotation.y;
                 gsap.set(".initial-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022) + '%' });
-                gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.20) - 100) + '%' });
+                gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.15) - 100) + '%' });
+
+                // var initialFramePosition;
+                // if(document.querySelector('.initial-screen').style.transform == 'translate(0%, 0px)'){
+                //     initialFramePosition = this.el.object3D.rotation.y;
+                // }
+                // if(initialFramePosition < this.el.object3D.rotation.y)
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
                 document.querySelector('.initial-frame-percent').innerHTML = -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022);
