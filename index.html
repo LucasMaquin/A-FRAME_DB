@@ -26,16 +26,16 @@
                     // setTimeout(this.el.object3D.rotation.y = -0.3, 1000);
                 }
 
-                if (this.el.object3D.rotation.y >= 0) {
-                    this.el.object3D.rotation.y = -0.001;
-                }
+                // if (this.el.object3D.rotation.y >= 0) {
+                //     this.el.object3D.rotation.y = -0.001;
+                // }
 
                 if (this.el.object3D.rotation.y < -6.01) {
                     this.el.object3D.rotation.y = -6.009;
                 }
 
                 if(document.querySelector('.load-screen').style.opacity != 0){
-                    setTimeout(this.el.object3D.rotation.y = 0 ,500);
+                    setTimeout(this.el.object3D.rotation.y = 0 ,100);
                 }
 
                 var initialPointToAppearFinalFrame = -5.486404561703972 - this.el.object3D.rotation.y;
