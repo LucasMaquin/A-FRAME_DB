@@ -85,6 +85,8 @@
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
                 document.querySelector('.realRotate').innerHTML = cameraRotation;
+                document.querySelector('.better055').innerHTML = cameraRotation > -0.55;
+                document.querySelector('.better007').innerHTML = cameraRotation >= -0.007;
 
             }
         });
@@ -253,6 +255,9 @@
         <p>Last point negative: <span class="LastPointNegative"></span></p>
         <p>first Point Positive: <span class="firstPointPositive"></span></p>
         <p>realRotate: <span class="realRotate"></span></p>
+        <br>
+        <p>If Menor que -0.55: <span class="better055"></span></p>
+        <p>If maior que -0.007: <span class="better007"></span></p>
     </div>
 
     <!-- SCRIPTS -->
