@@ -34,13 +34,14 @@
                     this.el.object3D.rotation.y = -6.009;
                 }
 
-                if(document.querySelector('.load-screen').style.opacity != 0){
-                    setTimeout(this.el.object3D.rotation.y = 0 ,100);
+                if (document.querySelector('.load-screen').style.opacity != 0) {
+                    setTimeout(this.el.object3D.rotation.y = 0, 100);
                 }
-
-                var initialPointToAppearFinalFrame = -5.486404561703972 - this.el.object3D.rotation.y;
+                
+                var initialPointToAppearFinalFrame = 0.82 - this.el.object3D.rotation.y;
+                console.log(initialPointToAppearFinalFrame);
                 gsap.set(".initial-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022) + '%' });
-                gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100) + '%' });
+                gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.20) - 100) + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
                 document.querySelector('.initial-frame-percent').innerHTML = -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022);
