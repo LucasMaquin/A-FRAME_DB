@@ -30,35 +30,15 @@
                     setTimeout(this.el.object3D.rotation.y = -0.02, 100);
                 }
 
-                // if (this.el.object3D.rotation.y > 0.10) {
-                //     this.el.object3D.rotation.y = 0.11;
-                // } else {
-                //     if (this.el.object3D.rotation.y >= 0) {
-                //         this.el.object3D.rotation.y = -0.01;
-                //     }
-                // }
-
-
-
-                switch (Math.sign(this.el.object3D.rotation.y)) {
-                    case -1:
-                        // code block
-                        // if (this.el.object3D.rotation.y >= 0) {
-                        //     console.log('entrou');
-                        //     this.el.object3D.rotation.y = -0.01;
-                        // }
-                        break;
-                    case 1:
-                        // code block
-                        // if (this.el.object3D.rotation.y <= 0.02) {
-                        //     this.el.object3D.rotation.y = 0.03;
-                        // }
-                        break;
+                var percentFirst = ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1;
+                if (percentFirst >= 0) {
+                    this.el.object3D.rotation.y = -0.001;
+                    percentFirst = 0;
                 }
 
 
                 // var initialPointToAppearFinalFrame = 0.79 - this.el.object3D.rotation.y;
-                gsap.set(".initial-screen", { x: ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1 + '%' });
+                gsap.set(".initial-screen", { x: percentFirst + '%' });
                 // gsap.set(".final-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / 0.15) + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
