@@ -48,19 +48,26 @@
                     cameraRotation = LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y);
                 }
 
-                if (cameraRotation > -0.002) {
-                    this.el.object3D.rotation.y = -0.003;
-                    cameraRotation = -0.003;
-                }
-                if (cameraRotation <= -6.009) {
-                    this.el.object3D.rotation.y = -6.008;
-                    cameraRotation = -6.008;
+                // if (cameraRotation > -0.002) {
+                //     this.el.object3D.rotation.y = -0.003;
+                //     cameraRotation = -0.003;
+                // }
+                // if (cameraRotation <= -6.009) {
+                //     this.el.object3D.rotation.y = -6.008;
+                //     cameraRotation = -6.008;
+                // }
+
+                if(cameraRotation > -1){
+                    if(cameraRotation >= -0.007){
+                        this.el.object3D.rotation.y = -0.007;
+                        cameraRotation = -0.007;
+                    }
                 }
 
-                // if (this.el.object3D.rotation.y < -0.1) {
-                //     positiveFirst = true;
-                //     firstPointPositive = undefined;
-                // }
+                if (this.el.object3D.rotation.y < -0.1) {
+                    positiveFirst = true;
+                    firstPointPositive = undefined;
+                }
 
                 // -4.74
                 // 1.53
