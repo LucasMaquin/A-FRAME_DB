@@ -31,10 +31,10 @@
                 }
 
                 if (document.querySelector('.load-screen').style.opacity != 0) {
-                    setTimeout(this.el.object3D.rotation.y = -0.007, 100);
+                    setTimeout(this.el.object3D.rotation.y = -0.007, 50);
                 }
 
-                if (Math.sign(this.el.object3D.rotation.y) === -1) {
+                if (Math.sign(this.el.object3D.rotation.y) === -1 && positiveFirst) {
                     LastPointNegative = this.el.object3D.rotation.y;
                 }
                 if (Math.sign(this.el.object3D.rotation.y) === 1 && positiveFirst) {
@@ -42,17 +42,23 @@
                     positiveFirst = false;
                 }
 
-                cameraRotation = firstPointPositive != undefined ? LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y) : LastPointNegative;
-
-
-                if (cameraRotation > -0.001) {
-                    this.el.object3D.rotation.y = -0.002;
+                if(firstPointPositive === undefined){
+                    cameraRotation = LastPointNegative;
+                } else {
+                    cameraRotation = LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y);
                 }
+
+                // if (cameraRotation > -0.001) {
+                //     this.el.object3D.rotation.y = -0.002;
+                // }  else if (cameraRotation < -7) {
+                //     this.el.object3D.rotation.y = -0.002;
+                // }
+                
 
                 // -4.74
                 // 1.53
 
-
+                //4.50
 
                 // var initialPointToAppearFinalFrame = 0.79 - this.el.object3D.rotation.y;
                 gsap.set(".initial-screen", { x: ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1 + '%' });
