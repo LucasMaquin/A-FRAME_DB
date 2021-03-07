@@ -26,30 +26,43 @@
                     // setTimeout(this.el.object3D.rotation.y = -0.3, 1000);
                 }
 
-                // if (this.el.object3D.rotation.y >= 0) {
-                //     this.el.object3D.rotation.y = -0.001;
+                if (document.querySelector('.load-screen').style.opacity != 0) {
+                    setTimeout(this.el.object3D.rotation.y = -0.02, 100);
+                }
+
+                // if (this.el.object3D.rotation.y > 0.10) {
+                //     this.el.object3D.rotation.y = 0.11;
+                // } else {
+                //     if (this.el.object3D.rotation.y >= 0) {
+                //         this.el.object3D.rotation.y = -0.01;
+                //     }
                 // }
 
-                if (this.el.object3D.rotation.y < -6.01) {
-                    this.el.object3D.rotation.y = -6.009;
+
+
+                switch (Math.sign(this.el.object3D.rotation.y)) {
+                    case -1:
+                        // code block
+                        // if (this.el.object3D.rotation.y >= 0) {
+                        //     console.log('entrou');
+                        //     this.el.object3D.rotation.y = -0.01;
+                        // }
+                        break;
+                    case 1:
+                        // code block
+                        // if (this.el.object3D.rotation.y <= 0.02) {
+                        //     this.el.object3D.rotation.y = 0.03;
+                        // }
+                        break;
                 }
 
-                if (document.querySelector('.load-screen').style.opacity != 0) {
-                    setTimeout(this.el.object3D.rotation.y = 0, 100);
-                }
 
                 // var initialPointToAppearFinalFrame = 0.79 - this.el.object3D.rotation.y;
-                gsap.set(".initial-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022) + '%' });
-                gsap.set(".final-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / 0.15) + '%' });
-
-                // var initialFramePosition;
-                // if(document.querySelector('.initial-screen').style.transform == 'translate(0%, 0px)'){
-                //     initialFramePosition = this.el.object3D.rotation.y;
-                // }
-                // if(initialFramePosition < this.el.object3D.rotation.y)
+                gsap.set(".initial-screen", { x: ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1 + '%' });
+                // gsap.set(".final-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / 0.15) + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
-                document.querySelector('.initial-frame-percent').innerHTML = -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022);
+                document.querySelector('.initial-frame-percent').innerHTML = ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1;
                 document.querySelector('.final-frame-percent').innerHTML = Math.abs((this.el.object3D.rotation.y * 100) / 0.15);
 
             }
