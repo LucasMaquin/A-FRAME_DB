@@ -16,7 +16,7 @@ loadPage
             gsap.to('.ready', .8, { opacity: 1, ease: 'power2.out' })
 
             document.querySelector('.load-screen').addEventListener('click', function () {
-                gsap.to('.load-screen', .5, { opacity: 0 })
+                // gsap.to('.load-screen', .5, { opacity: 0 })
                 startPage.play();
             })
 
