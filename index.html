@@ -57,10 +57,10 @@
                 //     cameraRotation = -6.008;
                 // }
 
-                if(cameraRotation > -0.55){
-                    if(cameraRotation >= -0.007){
-                        this.el.object3D.rotation.y = -0.007;
-                        cameraRotation = -0.007;
+                if (cameraRotation > -0.55 && cameraRotation <= -0.01) {
+                    if (cameraRotation >= -0.02) {
+                        this.el.object3D.rotation.y = -0.02;
+                        cameraRotation = -0.02;
                     }
                 }
 
@@ -85,8 +85,8 @@
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
                 document.querySelector('.realRotate').innerHTML = cameraRotation;
-                document.querySelector('.better055').innerHTML = cameraRotation > -0.55;
-                document.querySelector('.better007').innerHTML = cameraRotation >= -0.007;
+                document.querySelector('.better055').innerHTML = cameraRotation >= -0.02;
+                document.querySelector('.better007').innerHTML = cameraRotation <= -0.01;
 
             }
         });
@@ -209,9 +209,9 @@
 
     <div class="final-screen">
         <div id="load-bg"></div>
-    
+
         <div class="elements">
-    
+
             <div id="f2-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.12 88.5">
                     <g id="Camada_2" data-name="Camada 2">
@@ -221,7 +221,7 @@
                     </g>
                 </svg>
             </div>
-    
+
             <div id="f2-title">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332.48 230.22">
                     <g id="Camada_2" data-name="Camada 2">
@@ -235,17 +235,17 @@
                     </g>
                 </svg>
             </div>
-    
+
             <div id="f2-text">
                 <img src="assets/finalFrame/final-text.png" class="">
             </div>
-    
+
             <div id="f2-db-logo">
                 <img src="assets/finalFrame/logo-final-frame.png" class="">
             </div>
-    
+
         </div>
-    
+
     </div>
 
     <div id="status-bar">
