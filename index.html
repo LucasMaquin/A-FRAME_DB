@@ -73,11 +73,6 @@
 
                 // sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
 
-                if(this.el.object3D.rotation.y >= -0.007){
-                    this.el.object3D.rotation.y = -0.008;
-                    percentRotate = 0;
-                }
-
                 var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
                 var initialFramePercent = percentRotate <= 0 ? 0 : initialFramePercent;
                 
@@ -95,6 +90,7 @@
                 document.querySelector('.LastPointNegative').innerHTML = parseFloat(LastPointNegative).toFixed(2);
                 document.querySelector('.firstPointPositive').innerHTML = parseFloat(firstPointPositive).toFixed(2);
 
+                document.querySelector('.cameraRotate').innerHTML = cameraRotation;
                 document.querySelector('.realRotate').innerHTML = percentRotate;
 
                 // document.querySelector('.sunOfPosition').innerHTML = sunOfPosition;
@@ -267,6 +263,7 @@
         <p>first Point Positive: <span class="firstPointPositive"></span></p>
         <br>
         <br>
+        <p>Camera Rotation: <span class="cameraRotate"></span></p>
         <p>Camera Percent Rotation: <span class="realRotate"></span></p>
         <!-- <p>If Menor que -0.55: <span class="better055"></span></p>
         <p>If maior que -0.007: <span class="better007"></span></p> -->
