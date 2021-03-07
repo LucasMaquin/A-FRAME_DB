@@ -15,6 +15,10 @@
     <script>
 
         var firstScreen = true;
+        var LastPointNegative;
+        var firstPointPositive;
+        var positiveFirst = true;
+        var cameraRotation;
 
         AFRAME.registerComponent('rotation-reader', {
             tick: function () {
@@ -27,19 +31,24 @@
                 }
 
                 if (document.querySelector('.load-screen').style.opacity != 0) {
-                    setTimeout(this.el.object3D.rotation.y = -0.02, 100);
+                    setTimeout(this.el.object3D.rotation.y = -0, 100);
                 }
 
-                // -4.74
-                // 1.53
-                var LastPointNegative;
-                var firstPointPositive;
                 if (Math.sign(this.el.object3D.rotation.y) === -1) {
                     LastPointNegative = this.el.object3D.rotation.y;
                 }
-                if (Math.sign(this.el.object3D.rotation.y) === 1) {
+                if (Math.sign(this.el.object3D.rotation.y) === 1 && positiveFirst) {
                     firstPointPositive = this.el.object3D.rotation.y;
+                    positiveFirst = false;
                 }
+
+                cameraRotation = firstPointPositive != undefined ? LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y) : LastPointNegative;
+
+
+                // -4.74
+                // 1.53
+
+
 
                 // var initialPointToAppearFinalFrame = 0.79 - this.el.object3D.rotation.y;
                 gsap.set(".initial-screen", { x: ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1 + '%' });
@@ -50,6 +59,7 @@
                 document.querySelector('.final-frame-percent').innerHTML = Math.abs((this.el.object3D.rotation.y * 100) / 0.15);
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
+                document.querySelector('.realRotate').innerHTML = cameraRotation;
 
             }
         });
@@ -216,6 +226,7 @@
         <p>Final Frame percent: <span class="final-frame-percent"></span></p>
         <p>Last point negative: <span class="LastPointNegative"></span></p>
         <p>first Point Positive: <span class="firstPointPositive"></span></p>
+        <p>realRotate: <span class="realRotate"></span></p>
     </div>
 
     <!-- SCRIPTS -->
