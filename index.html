@@ -48,21 +48,15 @@
                     cameraRotation = LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y);
                 }
 
-                // if (cameraRotation > -0.002) {
-                //     this.el.object3D.rotation.y = -0.003;
-                //     cameraRotation = -0.003;
-                // }
                 // if (cameraRotation <= -6.009) {
                 //     this.el.object3D.rotation.y = -6.008;
                 //     cameraRotation = -6.008;
                 // }
 
-                if (cameraRotation > -0.55 && cameraRotation <= -0.01) {
-                    if (cameraRotation >= -0.02) {
-                        this.el.object3D.rotation.y = -0.02;
-                        cameraRotation = -0.02;
-                    }
-                }
+                // if (cameraRotation > -0.03) {
+                //     this.el.object3D.rotation.y = -0.04;
+                //     cameraRotation = -0.04;
+                // }
 
                 if (this.el.object3D.rotation.y < -0.1) {
                     positiveFirst = true;
@@ -75,12 +69,16 @@
                 //4.50
 
                 var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
-                console.log(initialPointToAppearFinalFrame);
-                gsap.set(".initial-screen", { x: ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1 + '%' });
+                var initialFramePercent = ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1;
+                var initialFramePercent = initialFramePercent >= 0 ? 0 : initialFramePercent;
+
+
+                gsap.set(".initial-screen", { x: initialFramePercent + '%' });
                 gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100) + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
-                document.querySelector('.initial-frame-percent').innerHTML = ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1;
+                document.querySelector('.initial-frame-percent').innerHTML = initialFramePercent;
+
                 document.querySelector('.final-frame-percent').innerHTML = ((initialPointToAppearFinalFrame * 100) / 0.5235987755982885) * -1;
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
