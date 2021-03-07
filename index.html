@@ -73,9 +73,15 @@
 
                 // sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
 
+                if (percentRotate > 90 && percentRotate <= 101) {
+                    if (percentRotate >= 100) {
+                        percentRotate = 100;
+                    }
+                }
+
                 var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
                 var initialFramePercent = percentRotate <= 0 ? 0 : initialFramePercent;
-                
+
                 var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
                 var finalPercent = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
                 var finalPercent = percentRotate >= 100 ? 0 : finalPercent;
