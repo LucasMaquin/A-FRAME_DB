@@ -67,24 +67,23 @@
 
                 // -4.74
                 // 1.53
-
                 //4.50
 
-
+                var percentRotate = parseFloat((cameraRotation * 100) / -6.02).toFixed(2);
 
                 // sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
 
-                // if(this.el.object3D.rotation.y >= -0.007){
-                //     this.el.object3D.rotation.y = -0.008;
-                //     sunOfPosition = 0;
-                // }
+                if(this.el.object3D.rotation.y >= -0.007){
+                    this.el.object3D.rotation.y = -0.008;
+                    percentRotate = 0;
+                }
 
-                var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
                 var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
-                // var initialFramePercent = initialFramePercent >= 0 ? 0 : initialFramePercent;
-
+                var initialFramePercent = percentRotate <= 0 ? 0 : initialFramePercent;
+                
+                var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
                 var finalPercent = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
-                // var finalPercent = finalPercent >= 0 && initialFramePercent < -100 ? 0 : initialFramePercent;
+                var finalPercent = percentRotate >= 100 ? 0 : finalPercent;
 
                 gsap.set(".initial-screen", { x: initialFramePercent + '%' });
                 gsap.set(".final-screen", { x: finalPercent + '%' });
@@ -96,7 +95,7 @@
                 document.querySelector('.LastPointNegative').innerHTML = parseFloat(LastPointNegative).toFixed(2);
                 document.querySelector('.firstPointPositive').innerHTML = parseFloat(firstPointPositive).toFixed(2);
 
-                document.querySelector('.realRotate').innerHTML = parseFloat((cameraRotation * 100) / -6.02).toFixed(2);
+                document.querySelector('.realRotate').innerHTML = percentRotate;
 
                 // document.querySelector('.sunOfPosition').innerHTML = sunOfPosition;
 
