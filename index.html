@@ -30,16 +30,18 @@
                     this.el.object3D.rotation.y = 0;
                 }
 
-                if (this.el.object3D.rotation.y < -5.9) {
-                    this.el.object3D.rotation.y = -5.9;
+                if (this.el.object3D.rotation.y < -6.01) {
+                    this.el.object3D.rotation.y = -6.01;
                 }
 
-                console.log(this.el.object3D.rotation.y);
-                
                 var initialPointToAppearFinalFrame = -5.486404561703972 - this.el.object3D.rotation.y;
                 console.log(initialPointToAppearFinalFrame);
                 gsap.set(".initial-screen", { x: -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022) + '%' });
                 gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100) + '%' });
+
+                document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
+                document.querySelector('.initial-frame-percent').innerHTML = -Math.abs((this.el.object3D.rotation.y * 100) / -0.3686135380212022);
+                document.querySelector('.final-frame-percent').innerHTML = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
 
             }
         });
@@ -198,7 +200,12 @@
             <img src="assets/loadFrame/loading.png" class="pos-r loading">
             <img src="assets/loadFrame/ready.png" class="pos-a ready">
         </div>
+    </div>
 
+    <div id="status-bar">
+        <p>this.el.object3D.rotation.y: <span class="rotationY"></span></p>
+        <p>Initial Frame percent: <span class="initial-frame-percent"></span></p>
+        <p>Final Frame percent: <span class="final-frame-percent"></span></p>
     </div>
 
     <!-- SCRIPTS -->
