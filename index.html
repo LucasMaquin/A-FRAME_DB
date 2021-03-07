@@ -22,6 +22,9 @@
 
         var sunOfPosition = 0;
 
+        var positionOfFinalFrame100;
+        var checkFinalPosition = false;
+
         AFRAME.registerComponent('rotation-reader', {
             tick: function () {
                 this.el.object3D.rotation.x = 0;
@@ -70,14 +73,30 @@
                 //4.50
 
                 var percentRotate = parseFloat((cameraRotation * 100) / -6.02).toFixed(2);
+                // percentRotate = percentRotate >= 100 ? 100 : percentRotate < 0 ? 0 : percentRotate;
+
+                if (percentRotate >= 100) {
+
+                    if (!checkFinalPosition) {
+                        positionOfFinalFrame100 = this.el.object3D.rotation.y;
+                        checkFinalPosition = true;
+                    }
+
+                    percentRotate = 100;
+                    if (positionOfFinalFrame100 <= this.el.object3D.rotation.y) {
+                        this.el.object3D.rotation.y = positionOfFinalFrame100;
+                    }
+
+                }
 
                 // sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
 
-                if (percentRotate > 90 && percentRotate <= 101) {
-                    if (percentRotate >= 100) {
-                        percentRotate = 100;
-                    }
-                }
+                // if (document.querySelector('.final-frame-percent').style.transform == "translate(0%, 0px)") {
+                //     positionOfFinalFrame100 = this.el.object3D.rotation.y;
+                // }
+
+                // console.log(document.querySelector('.final-screen').style.transform);
+
 
                 var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
                 var initialFramePercent = percentRotate <= 0 ? 0 : initialFramePercent;
