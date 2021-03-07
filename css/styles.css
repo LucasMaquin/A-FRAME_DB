@@ -16,7 +16,8 @@ body {
 }
 
 .load-screen {
-    pointer-events: all
+    pointer-events: all;
+    opacity: 1;
 }
 
 .final-screen {
