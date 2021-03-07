@@ -69,17 +69,19 @@
                 //4.50
 
                 var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
-                var initialFramePercent = ((this.el.object3D.rotation.y * 100) / -0.3686135380212022) * -1;
+                var finalPercent = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
+                var finalPercent = finalPercent >= 0 ? 0 : initialFramePercent;
+                var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
                 var initialFramePercent = initialFramePercent >= 0 ? 0 : initialFramePercent;
 
 
                 gsap.set(".initial-screen", { x: initialFramePercent + '%' });
-                gsap.set(".final-screen", { x: Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100) + '%' });
+                gsap.set(".final-screen", { x:  + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
                 document.querySelector('.initial-frame-percent').innerHTML = initialFramePercent;
 
-                document.querySelector('.final-frame-percent').innerHTML = ((initialPointToAppearFinalFrame * 100) / 0.5235987755982885) * -1;
+                document.querySelector('.final-frame-percent').innerHTML = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
                 document.querySelector('.realRotate').innerHTML = cameraRotation;
