@@ -20,6 +20,8 @@
         var positiveFirst = true;
         var cameraRotation = -0.007;
 
+        var sunOfPosition = 0;
+
         AFRAME.registerComponent('rotation-reader', {
             tick: function () {
                 this.el.object3D.rotation.x = 0;
@@ -68,25 +70,33 @@
 
                 //4.50
 
-                var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
-                var finalPercent = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
-                var finalPercent = finalPercent >= 0 ? 0 : initialFramePercent;
-                var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
-                var initialFramePercent = initialFramePercent >= 0 ? 0 : initialFramePercent;
+                sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
 
+                if(this.el.object3D.rotation.y >= -0.007){
+                    this.el.object3D.rotation.y = -0.008;
+                    sunOfPosition = 0;
+                }
+
+                var initialPointToAppearFinalFrame = -5.486404561703972 - cameraRotation;
+                var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
+                var initialFramePercent = sunOfPosition >= 0 ? 0 : initialFramePercent;
+
+                var finalPercent = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
+                // var finalPercent = finalPercent >= 0 && initialFramePercent < -100 ? 0 : initialFramePercent;
 
                 gsap.set(".initial-screen", { x: initialFramePercent + '%' });
-                gsap.set(".final-screen", { x:  + '%' });
+                gsap.set(".final-screen", { x: finalPercent + '%' });
 
                 document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
                 document.querySelector('.initial-frame-percent').innerHTML = initialFramePercent;
 
-                document.querySelector('.final-frame-percent').innerHTML = Math.abs((initialPointToAppearFinalFrame * 100 / 0.5235987755982885) - 100);
+                document.querySelector('.final-frame-percent').innerHTML = finalPercent;
                 document.querySelector('.LastPointNegative').innerHTML = LastPointNegative;
                 document.querySelector('.firstPointPositive').innerHTML = firstPointPositive;
                 document.querySelector('.realRotate').innerHTML = cameraRotation;
                 document.querySelector('.better055').innerHTML = cameraRotation >= -0.02;
                 document.querySelector('.better007').innerHTML = cameraRotation <= -0.01;
+                document.querySelector('.sunOfPosition').innerHTML = sunOfPosition;
 
             }
         });
@@ -258,6 +268,9 @@
         <br>
         <p>If Menor que -0.55: <span class="better055"></span></p>
         <p>If maior que -0.007: <span class="better007"></span></p>
+        <br>
+        <br>
+        <p>sunOfPosition: <span class="sunOfPosition"></span></p>
     </div>
 
     <!-- SCRIPTS -->
