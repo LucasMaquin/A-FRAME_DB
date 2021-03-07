@@ -34,8 +34,9 @@
                     setTimeout(this.el.object3D.rotation.y = -0.007, 50);
                 }
 
-                if (Math.sign(this.el.object3D.rotation.y) === -1 && positiveFirst) {
-                    LastPointNegative = this.el.object3D.rotation.y;
+                if (Math.sign(this.el.object3D.rotation.y) === -1) {
+
+                    LastPointNegative = this.el.object3D.rotation.y != undefined ? this.el.object3D.rotation.y : LastPointNegative;
                 }
                 if (Math.sign(this.el.object3D.rotation.y) === 1 && positiveFirst) {
                     firstPointPositive = this.el.object3D.rotation.y;
