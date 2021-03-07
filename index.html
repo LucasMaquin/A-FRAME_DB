@@ -35,26 +35,28 @@
                 }
 
                 if (Math.sign(this.el.object3D.rotation.y) === -1) {
-
                     LastPointNegative = this.el.object3D.rotation.y != undefined ? this.el.object3D.rotation.y : LastPointNegative;
                 }
                 if (Math.sign(this.el.object3D.rotation.y) === 1 && positiveFirst) {
-                    firstPointPositive = this.el.object3D.rotation.y;
+                    firstPointPositive = this.el.object3D.rotation.y != undefined ? this.el.object3D.rotation.y : firstPointPositive;
                     positiveFirst = false;
                 }
 
-                if(firstPointPositive === undefined){
+                if (firstPointPositive === undefined) {
                     cameraRotation = LastPointNegative;
                 } else {
                     cameraRotation = LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y);
                 }
 
-                // if (cameraRotation > -0.001) {
-                //     this.el.object3D.rotation.y = -0.002;
-                // }  else if (cameraRotation < -7) {
-                //     this.el.object3D.rotation.y = -0.002;
-                // }
-                
+                if (cameraRotation > -0.003) {
+                    this.el.object3D.rotation.y = -0.004;
+                    cameraRotation = -0.004;
+                }
+
+                if(this.el.object3D.rotation.y < -0.1){
+                    positiveFirst = true;
+                    firstPointPositive = undefined;
+                }
 
                 // -4.74
                 // 1.53
