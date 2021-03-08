@@ -62,7 +62,7 @@ img {
 
 .elements {
     position: absolute;
-    top: 50%;
+    top: 51%;
     left: 50%;
     max-width: 80%;
     width: 45vh;
@@ -71,20 +71,20 @@ img {
 
 #f1-db-logo {
     position: relative;
-    margin: 0 auto 35% auto;
+    margin: 0 auto 0% auto;
     width: 20%;
 }
 
 #f1-title {
     position: relative;
-    margin-bottom: 10%;
+    margin: 36% 0 30% 0;
     width: 100%;
 }
 
 #f1-phone {
     position: relative;
-    margin: 0 auto 9% auto;
-    width: 37%;
+    margin: 0% auto 0% auto;
+    width: 19%;
 }
 
 #f1-text {
@@ -147,10 +147,10 @@ svg {
     opacity: 0;
 }
 
-.arrow-anim {
+/* .arrow-anim {
     transform: translateX(-15%);
     opacity: 0;
-}
+} */
 
 .text-anima {
     transform: translateY(30%);
