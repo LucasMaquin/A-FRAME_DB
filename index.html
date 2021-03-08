@@ -89,17 +89,17 @@
                 gsap.set(".initial-screen", { x: initialFramePercent + '%' });
                 gsap.set(".final-screen", { x: finalPercent + '%' });
 
-                document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
-                document.querySelector('.initial-frame-percent').innerHTML = initialFramePercent;
+                // document.querySelector('.rotationY').innerHTML = this.el.object3D.rotation.y;
+                // document.querySelector('.initial-frame-percent').innerHTML = initialFramePercent;
 
-                document.querySelector('.final-frame-percent').innerHTML = parseFloat(finalPercent).toFixed(2);
-                document.querySelector('.LastPointNegative').innerHTML = parseFloat(LastPointNegative).toFixed(2);
-                document.querySelector('.firstPointPositive').innerHTML = parseFloat(firstPointPositive).toFixed(2);
+                // document.querySelector('.final-frame-percent').innerHTML = parseFloat(finalPercent).toFixed(2);
+                // document.querySelector('.LastPointNegative').innerHTML = parseFloat(LastPointNegative).toFixed(2);
+                // document.querySelector('.firstPointPositive').innerHTML = parseFloat(firstPointPositive).toFixed(2);
 
-                document.querySelector('.cameraRotate').innerHTML = cameraRotation;
-                document.querySelector('.realRotate').innerHTML = percentRotate;
+                // document.querySelector('.cameraRotate').innerHTML = cameraRotation;
+                // document.querySelector('.realRotate').innerHTML = percentRotate;
 
-                document.querySelector('.sunOfPosition').innerHTML = sunOfPosition;
+                // document.querySelector('.sunOfPosition').innerHTML = sunOfPosition;
 
             }
         });
@@ -128,8 +128,8 @@
         <a-scene vr-mode-ui="enabled: false" cursor="rayOrigin: mouse" renderer="antialias: true; maxCanvasWidth: 1920; maxCanvasHeight: 1920;">
             <!-- ASSETS -->
             <a-assets>
-                <img src="assets/bg-360.jpg" id="bg">
-                <img src="assets/bg-jpg.jpg" id="women">
+                <!-- <img src="assets/bg-360.jpg" id="bg"> -->
+                <img src="assets/tripão8k.jpg" id="women">
             </a-assets>
 
             <!-- LIGHTS -->
@@ -146,13 +146,8 @@
             <!-- <a-plane id="floor" color="#1F58AF" material="src: #sea" geometry="" rotation="-90 0 0" scale="20 20" position="0 -9.9 0"></a-plane> -->
 
             <!-- women -->
-            <a-cylinder id="women" segments-height="4" segments-radial="30" material="shader: flat; side: back; transparent: true; src: #women" radius="2" rotation="0 -170 0" position="0 1 0" scale="3 2 3" open-ended="true">
+            <a-cylinder id="women" segments-height="4" segments-radial="30" material="side: back; transparent: false; src: #women" radius="2" rotation="0 -170 0" position="0 1 0" scale="3 2 3" open-ended="true">
             </a-cylinder>
-
-            <!-- CENTER IMAGE -->
-            <a-entity>
-                <a-image src="#bg-text" position="0 -2 -5" width="2" height="0.05" rotation="0 0 0"></a-image>
-            </a-entity>
 
         </a-scene>
     </div>
@@ -261,7 +256,7 @@
 
     </div>
 
-    <div id="status-bar">
+    <!-- <div id="status-bar">
         <p>this.el.object3D.rotation.y: <span class="rotationY"></span></p>
         <p>Initial Frame percent: <span class="initial-frame-percent"></span></p>
         <p>Final Frame percent: <span class="final-frame-percent"></span></p>
@@ -271,11 +266,9 @@
         <br>
         <p>Camera Rotation: <span class="cameraRotate"></span></p>
         <p>Camera Percent Rotation: <span class="realRotate"></span></p>
-        <!-- <p>If Menor que -0.55: <span class="better055"></span></p>
-        <p>If maior que -0.007: <span class="better007"></span></p> -->
         <br>
         <p>sunOfPosition: <span class="sunOfPosition"></span></p>
-    </div>
+    </div> -->
 
     <!-- SCRIPTS -->
     <script src="js/DrawSVGPlugin.min.js"></script>
