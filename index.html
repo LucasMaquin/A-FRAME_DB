@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <title>Digital Business</title>
     <link rel="stylesheet" href="css/loading-bar.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -46,7 +49,7 @@
                 }
 
                 if (document.querySelector('.load-screen').style.opacity != 0) {
-                    setTimeout(this.el.object3D.rotation.y = -0.0002, 50);
+                    // setTimeout(this.el.object3D.rotation.y = -0.0002, 50);
                     startRotate = true;
                 }
 
@@ -64,7 +67,7 @@
                     cameraRotation = LastPointNegative - (firstPointPositive - this.el.object3D.rotation.y);
                 }
 
-                if (this.el.object3D.rotation.y < -0.1) {
+                if (this.el.object3D.rotation.y < 0) {
                     positiveFirst = true;
                     firstPointPositive = undefined;
                 }
@@ -144,7 +147,7 @@
             <!-- <a-cylinder id="women" segments-height="4" segments-radial="30" material="side: back; transparent: false; src: #women" radius="2" rotation="0 -170 0" position="0 1 0" scale="2 1.2 2" open-ended="true">
             </a-cylinder> -->
 
-            <a-sky src="#2x1" rotation="0 -80 0" position="0 1 0" scale="1 1 1" open-ended="true"></a-sky>
+            <a-sky material="shader: flat; side: back; transparent: true; src:#2x1" id="bg" rotation="0 -80 0" position="0 1 0" scale="1 1 1" open-ended="true"></a-sky>
 
 
             <!-- CAMERA RIG -->
@@ -192,10 +195,10 @@
                 <!-- <img src="assets/initialFrame/phone_arrow.png" class="pos-a arrow-anim"> -->
             </div>
 
-            <!-- <div id="f1-text">
+            <div id="f1-text">
                 <img src="assets/initialFrame/page_1_text_1.png" class="pos-r text-anima">
                 <img src="assets/initialFrame/page_1_text_2.png" class="pos-a text-anima">
-            </div> -->
+            </div>
         </div>
 
     </div>
@@ -277,9 +280,9 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="js/DrawSVGPlugin.min.js"></script>
-    <script src="js/gsap.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/DrawSVGPlugin.min.js?n=1"></script>
+    <script src="js/gsap.js?n=1"></script>
+    <script src="js/index.js?n=1"></script>
 
     <script>
         var sceneEl = document.querySelector('a-scene');
