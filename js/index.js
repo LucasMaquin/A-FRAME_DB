@@ -11,7 +11,7 @@ loadPage
     .to('.loading', 2, { opacity: 1, ease: 'power2.out' }, "start+=" + .3)
     .to('#load-icon', .5, { opacity: 1, ease: 'power2.out' }, "start+=" + .3)
     .to('.load-icon', 1.5, {
-        startAt: { drawSVG: '0% 0%' }, drawSVG: '0% 100%', ease: 'none', repeat: 0, repeatDelay: .7, onComplete: function () {
+        startAt: { drawSVG: '0% 0%' }, drawSVG: '0% 100%', ease: 'none', repeat: 3, repeatDelay: .7, onComplete: function () {
             gsap.to('.loading', .5, { opacity: 0 })
             gsap.to('.ready', .8, { opacity: 1, ease: 'power2.out' })
 
