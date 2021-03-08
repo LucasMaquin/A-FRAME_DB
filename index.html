@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 
     <script>
-
+        var startRotate = false;
         var firstScreen = true;
         var LastPointNegative;
         var firstPointPositive;
@@ -28,7 +28,16 @@
 
         AFRAME.registerComponent('rotation-reader', {
             tick: function () {
+                var camera = this;
+
                 this.el.object3D.rotation.x = 0;
+
+                if (startRotate) {
+                    this.el.setAttribute('look-controls', { enabled: true })
+                } else {
+                    this.el.setAttribute('look-controls', { enabled: false })
+                }
+
 
                 if (this.el.object3D.rotation.y < 0 && firstScreen) {
                     gsap.to(container, 1, { opacity: 1, ease: "power2.out" });
@@ -37,7 +46,8 @@
                 }
 
                 if (document.querySelector('.load-screen').style.opacity != 0) {
-                    setTimeout(this.el.object3D.rotation.y = -0.007, 50);
+                    setTimeout(this.el.object3D.rotation.y = -0.0002, 50);
+                    startRotate = true;
                 }
 
                 if (Math.sign(this.el.object3D.rotation.y) === -1) {
@@ -59,16 +69,6 @@
                     firstPointPositive = undefined;
                 }
 
-                // if (cameraRotation <= -6.009) {
-                //     this.el.object3D.rotation.y = -6.008;
-                //     cameraRotation = -6.008;
-                // }
-
-                // if (cameraRotation > -0.03) {
-                //     this.el.object3D.rotation.y = -0.04;
-                //     cameraRotation = -0.04;
-                // }
-
                 // -4.74
                 // 1.53
                 //4.50
@@ -76,14 +76,8 @@
                 var percentRotate = parseFloat((cameraRotation * 100) / -6.02).toFixed(2);
 
                 if (percentRotate >= 101) {
-                    // this.el.object3D.rotation.y < -6.04
                     this.el.setAttribute('look-controls', { enabled: false })
                 }
-
-                // sunOfPosition += cameraRotation != undefined ? cameraRotation : 0;
-
-                // console.log(document.querySelector('.final-screen').style.transform);
-
 
                 var initialFramePercent = ((cameraRotation * 100) / -0.3686135380212022) * -1;
                 var initialFramePercent = percentRotate <= 0 ? 0 : initialFramePercent;
@@ -287,6 +281,17 @@
     <script src="js/DrawSVGPlugin.min.js"></script>
     <script src="js/gsap.js"></script>
     <script src="js/index.js"></script>
+
+    <script>
+        var sceneEl = document.querySelector('a-scene');
+
+        sceneEl.addEventListener('camera-set-active', function () {
+            // console.log(document.querySelector('a-scene').renderer);  // OK
+            // console.log(document.querySelector('a-scene').camera);    // OK
+            document.querySelector('a-scene').renderer.setPixelRatio(window.devicePixelRatio);
+        });
+
+    </script>
 
 </body>
 
