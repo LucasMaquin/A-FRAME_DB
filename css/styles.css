@@ -6,6 +6,10 @@ body {
     opacity: 1;
 }
 
+* {
+    image-rendering: -webkit-optimize-contrast;
+}
+
 .initial-screen, .final-screen, .load-screen {
     position: absolute;
     top: 0;
